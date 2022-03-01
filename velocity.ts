@@ -33,11 +33,10 @@ const confidence = number(argv[argv.length - 1]) as number;
 const low = -10;
 const high = 10;
 const tolerance = 1e-8;
-const s = std(data, "uncorrected");
 const degreesFreedom = data.length;
 const t = new dist.T(degreesFreedom);
 const tValue = binarySearch((x) => t.cdf(x), confidence, low, high, tolerance);
-const standardError = s / sqrt(data.length);
+const standardError = std(data, "uncorrected") / sqrt(data.length);
 const total = tValue * standardError + mean(data);
 
 console.log(
