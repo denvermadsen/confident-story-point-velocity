@@ -28,7 +28,7 @@ function binarySearch(
   }
   return mean(low, high);
 }
-const data = argv.slice(2, -2).map<number>((x) => number(x) as number);
+const data = argv.slice(2, -1).map<number>((x) => number(x) as number);
 const confidence = number(argv[argv.length - 1]) as number;
 const low = -10;
 const high = 10;
