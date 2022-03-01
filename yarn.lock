@@ -1802,6 +1802,11 @@
     "@stdlib/utils-constructor-name" "^0.0.x"
     "@stdlib/utils-global" "^0.0.x"
 
+bisect@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/bisect/-/bisect-1.0.0.tgz#9d3ee7de8476108a6c31b7c044bae224469aaf9e"
+  integrity sha1-nT7n3oR2EIpsMbfARLriJEaar54=
+
 complex.js@^2.0.15:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/complex.js/-/complex.js-2.0.15.tgz#7add6848b4c1d12aa9262f7df925ebe7a51a7406"
