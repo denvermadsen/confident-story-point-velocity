@@ -1,4 +1,4 @@
-import { std, mean } from "mathjs";
+import { std, mean, sqrt } from "mathjs";
 import * as dist from "@stdlib/stats-base-dists-t";
 
 /**
@@ -36,7 +36,9 @@ const high = 10;
 const tolerance = 1e-8;
 const s = std(data, "uncorrected");
 const degreesFreedom = data.length;
-const t = new dist.T(15);
-const numStds = binarySearch((x) => t.cdf(x), confidence, low, high, tolerance);
+const t = new dist.T(degreesFreedom);
+const tValue = binarySearch((x) => t.cdf(x), confidence, low, high, tolerance);
+const standardError = s / sqrt(data.length);
+const total = tValue * standardError + mean(data);
 
-console.log(`# STDs: ${numStds}`);
+console.log(`result: ${total}`);
