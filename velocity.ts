@@ -40,7 +40,9 @@ const standardError = std(data, "uncorrected") / sqrt(data.length);
 const total = tValue * standardError + mean(data);
 
 console.log(
-  `Average velocity: ${mean(data).toFixed(1)} Story Points per Sprint`
+  `Average velocity over ${data.length} sprints: ${mean(data).toFixed(
+    1
+  )} Story Points per Sprint`
 );
 console.log(
   `There is a ${confidence * 100}% chance that we can complete ${total.toFixed(
