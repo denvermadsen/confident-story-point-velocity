@@ -1802,6 +1802,11 @@
     "@stdlib/utils-constructor-name" "^0.0.x"
     "@stdlib/utils-global" "^0.0.x"
 
+"@types/node@^17.0.21":
+  version "17.0.21"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
+  integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
+
 complex.js@^2.0.15:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/complex.js/-/complex.js-2.0.15.tgz#7add6848b4c1d12aa9262f7df925ebe7a51a7406"
@@ -1877,6 +1882,11 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
+
+normal-distribution@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/normal-distribution/-/normal-distribution-1.1.1.tgz#e8e2e79a5b3453d6e02f3786ff1f592051531249"
+  integrity sha512-lyz7LXBhjiEdAw234zTz05EohshNCORpC0duBQeaKzZIeTE6oDfpcBocEXbZTFv3GkoiMPz9mhgUuv5mMc64uA==
 
 path-parse@^1.0.7:
   version "1.0.7"

@@ -1,6 +1,7 @@
 import { std, mean, sqrt, number } from "mathjs";
 import * as dist from "@stdlib/stats-base-dists-t";
 import { argv } from "process";
+import * as norm from "normal-distribution";
 
 /**
  *

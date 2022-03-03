@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@stdlib/stats-base-dists-t": "^0.0.6",
-    "mathjs": "^10.2.0"
+    "@types/node": "^17.0.21",
+    "mathjs": "^10.2.0",
+    "normal-distribution": "^1.1.1"
   }
 }
