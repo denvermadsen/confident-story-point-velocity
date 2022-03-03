@@ -1,7 +1,7 @@
 import { std, mean, sqrt, number } from "mathjs";
 import * as dist from "@stdlib/stats-base-dists-t";
 import { argv } from "process";
-import * as norm from "normal-distribution";
+import NormalDistribution from "normal-distribution";
 
 /**
  *
@@ -30,24 +30,30 @@ function binarySearch(
   return mean(low, high);
 }
 const data = argv.slice(2, -1).map<number>((x) => number(x) as number);
-const confidenceRaw = number(argv[argv.length - 1]) as number;
-const confidence = 1 - confidenceRaw;
-const low = -10;
-const high = 10;
+const confidence = number(argv[argv.length - 1]) as number;
+const low = -3;
+const high = 3;
 const tolerance = 1e-8;
-const degreesFreedom = data.length;
-const t = new dist.T(degreesFreedom);
-const tValue = binarySearch((x) => t.cdf(x), confidence, low, high, tolerance);
-const standardError = std(data, "uncorrected") / sqrt(data.length);
-const total = tValue * standardError + mean(data);
+const average = mean(data);
+const standardDeviation = std(data, "uncorrected");
+const normalDistribution = new NormalDistribution(average, standardDeviation);
+const value = binarySearch(
+  (x) => 1 - normalDistribution.cdf(x),
+  confidence,
+  low,
+  high,
+  tolerance
+);
 
 console.log(
-  `Average velocity over ${data.length} sprints: ${mean(data).toFixed(
+  `Average velocity over ${data.length} sprints: ${average.toFixed(
     1
-  )} Story Points per Sprint`
+  )} Story Points per Sprint (Standard Deviation: ${standardDeviation.toFixed(
+    2
+  )})`
 );
 console.log(
-  `There is a ${
-    confidenceRaw * 100
-  }% chance that we can complete ${total.toFixed(0)} Story Points`
+  `There is a ${confidence * 100}% chance that we can complete ${value.toFixed(
+    0
+  )} Story Points`
 );
