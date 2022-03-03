@@ -29,7 +29,7 @@ function binarySearch(
 }
 const data = argv.slice(2, -1).map<number>((x) => number(x) as number);
 const confidence = number(argv[argv.length - 1]) as number;
-const tolerance = 1e-8;
+const maxError = 1e-8;
 const average = mean(data);
 const low = 0;
 const high = average * 10;
@@ -44,7 +44,7 @@ const value = binarySearch(
   1 - confidence,
   low,
   high,
-  tolerance
+  maxError
 );
 
 console.log(
