@@ -1,8 +1,6 @@
 import { std, mean, sqrt, number } from "mathjs";
-import * as dist from "@stdlib/stats-base-dists-t";
 import { argv } from "process";
-import NormalDistribution from "normal-distribution";
-
+import gaussian from "gaussian";
 /**
  *
  * @param value monotonic function
@@ -31,15 +29,19 @@ function binarySearch(
 }
 const data = argv.slice(2, -1).map<number>((x) => number(x) as number);
 const confidence = number(argv[argv.length - 1]) as number;
-const low = -3;
-const high = 3;
 const tolerance = 1e-8;
 const average = mean(data);
+const low = 0;
+const high = average * 10;
 const standardDeviation = std(data, "uncorrected");
-const normalDistribution = new NormalDistribution(average, standardDeviation);
+const normalDistribution = gaussian(
+  average,
+  standardDeviation * standardDeviation
+);
+
 const value = binarySearch(
-  (x) => 1 - normalDistribution.cdf(x),
-  confidence,
+  (x) => normalDistribution.cdf(x),
+  1 - confidence,
   low,
   high,
   tolerance
