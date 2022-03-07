@@ -1,5 +1,5 @@
 import gaussian, { Gaussian } from "gaussian";
-import { mean, number, std } from "mathjs";
+import { mean, number, sqrt, std } from "mathjs";
 import { argv } from "process";
 import { binarySearch } from "./binarySearch";
 
@@ -17,8 +17,12 @@ let normalDistribution = gaussian(
 );
 function numberOfSprintsToComplete(storyPoints: number, confidence: number) {
   return binarySearch(
-    (sprints) =>
-      expectedStoryPoints(normalDistribution.scale(sprints), confidence),
+    (sprints) => {
+      const sd = standardDeviation / sqrt(sprints);
+      let dist = gaussian(average, sd * sd);
+      console.log(`Sprints: ${sprints}`, `SD: ${sd.toFixed(2)}`);
+      return expectedStoryPoints(dist, confidence) * sprints;
+    },
     storyPoints,
     low,
     high,
