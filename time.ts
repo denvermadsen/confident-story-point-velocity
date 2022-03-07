@@ -1,5 +1,5 @@
 import gaussian, { Gaussian } from "gaussian";
-import { mean, number, sqrt, std } from "mathjs";
+import { ceil, mean, number, sqrt, std } from "mathjs";
 import { argv } from "process";
 import { averageReport } from "./averageReport";
 import { binarySearch } from "./binarySearch";
@@ -21,7 +21,6 @@ function numberOfSprintsToComplete(storyPoints: number, confidence: number) {
     (sprints) => {
       const sd = standardDeviation / sqrt(sprints);
       let dist = gaussian(average, sd * sd);
-      console.log(`Sprints: ${sprints}`, `SD: ${sd.toFixed(2)}`);
       return expectedStoryPoints(dist, confidence) * sprints;
     },
     storyPoints,
@@ -50,8 +49,7 @@ console.log(averageReport(data));
 console.log(
   `There is a ${
     confidence * 100
-  }% chance we can complete the task (${storyPointsToComplete} Story Points) in ${numberOfSprintsToComplete(
-    storyPointsToComplete,
-    confidence
-  ).toFixed(2)} Sprints`
+  }% chance we can complete the workload (${storyPointsToComplete} Story Points) in ${ceil(
+    numberOfSprintsToComplete(storyPointsToComplete, confidence)
+  )} Sprints`
 );
