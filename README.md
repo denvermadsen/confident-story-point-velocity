@@ -34,3 +34,7 @@ The following estimates the number of sprints required to be 90% confident of ho
 #### Input
 
 Story points each sprint, followed by the desired confidence level, and finally the number of outstanding story points that require completion.
+
+#### Prerequisite packages
+
+- ts-node
