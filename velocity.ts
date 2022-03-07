@@ -26,5 +26,5 @@ console.log(averageReport(data));
 console.log(
   `There is a ${confidence * 100}% chance that we can complete ${floor(
     value.toFixed(0)
-  )} Story Points`
+  )} Story Points this sprint`
 );
