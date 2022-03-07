@@ -1,6 +1,7 @@
 import gaussian, { Gaussian } from "gaussian";
 import { mean, number, sqrt, std } from "mathjs";
 import { argv } from "process";
+import { averageReport } from "./averageReport";
 import { binarySearch } from "./binarySearch";
 
 const data = argv.slice(2, -2).map<number>((x) => number(x) as number);
@@ -45,9 +46,8 @@ function expectedStoryPoints(dist: Gaussian, confidence: number) {
     maxError
   );
 }
-
+console.log(averageReport(data));
 console.log(
-  `Expected: ${expectedStoryPoints(normalDistribution, confidence)}\n`,
   `There is a ${
     confidence * 100
   }% chance we can complete the task (${storyPointsToComplete} Story Points) in ${numberOfSprintsToComplete(
