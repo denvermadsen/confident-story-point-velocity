@@ -24,3 +24,9 @@ Stakeholders wish to know when a work item will be completed. This function will
   - this is rarely the case. For large workloads it is typical that some work has not been accounted for, and thus the eventual work total will exceed the initial estimate.
 - all team members are contributing toward the work item
   - does not hold if the team's velocity is shared among multiple ongoing epics
+
+#### Example
+
+The following estimates the number of sprints required to be 90% confident of how many sprints we need to complete 10 story points (assuming we have previously completed sprints of 3, 4 and 5 story points)
+
+`ts-node time.ts 3 4 5 .9 10`
