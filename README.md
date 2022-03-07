@@ -6,7 +6,7 @@ Time estimates for software is highly variable, but stakeholders require reliabl
 
 The following command will output the number of story points we can complete with 90% confidence, if over 3 sprints we finished 3, 4 and 5 story points:
 
-`ts-node velocity.ts 3 4 5 .9`
+`yarn install && ts-node velocity.ts 3 4 5 .9`
 
 #### Input
 
@@ -15,6 +15,7 @@ Story points each sprint, followed by the desired confidence level.
 #### Prerequisite packages
 
 - ts-node
+- yarn
 
 ### Estimating how long a workload will require
 
@@ -29,7 +30,7 @@ Stakeholders wish to know when a work item will be completed. This function will
 
 The following estimates the number of sprints required to be 90% confident of how many sprints we need to complete 10 story points (assuming we have previously completed sprints of 3, 4 and 5 story points)
 
-`ts-node time.ts 3 4 5 .9 10`
+`yarn install && ts-node time.ts 3 4 5 .9 10`
 
 #### Input
 
@@ -38,3 +39,4 @@ Story points each sprint, followed by the desired confidence level, and finally 
 #### Prerequisite packages
 
 - ts-node
+- yarn
