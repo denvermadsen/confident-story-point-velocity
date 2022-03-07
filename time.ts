@@ -17,26 +17,33 @@ let normalDistribution = gaussian(
 );
 function numberOfSprintsToComplete(storyPoints: number, confidence: number) {
   return binarySearch(
-    (sprints) => {
-      const conf = confidenceOfCompletingLessThan(
-        storyPoints,
-        normalDistribution.scale(sprints)
-      );
-      console.log(conf, sprints, confidence);
-      return conf;
-    },
-    confidence,
+    (sprints) =>
+      expectedStoryPoints(normalDistribution.scale(sprints), confidence),
+    storyPoints,
     low,
     high,
     maxError
   );
 }
-function confidenceOfCompletingLessThan(n: number, dist: Gaussian) {
-  const conf = dist.cdf(n);
-  return conf;
+
+/**
+ * low bound, number of story points we expect to compete at a confidence
+ * @param dist
+ * @param confidence
+ * @returns
+ */
+function expectedStoryPoints(dist: Gaussian, confidence: number) {
+  return binarySearch(
+    (storyPoints) => dist.cdf(storyPoints),
+    1 - confidence,
+    low,
+    high,
+    maxError
+  );
 }
 
 console.log(
+  `Expected: ${expectedStoryPoints(normalDistribution, confidence)}\n`,
   `There is a ${
     confidence * 100
   }% chance we can complete the task (${storyPointsToComplete} Story Points) in ${numberOfSprintsToComplete(
