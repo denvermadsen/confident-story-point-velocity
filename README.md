@@ -21,6 +21,6 @@ Story points each sprint, followed by the desired confidence level.
 Stakeholders wish to know when a work item will be completed. This function will approximate the number of sprints we require to complete the work. This has some caveats--it assumes that
 
 - the story point total is accurate
-  - this is rarely the case. Usually some work has not been accounted for, and will increase the scope of work to be done.
+  - this is rarely the case. For large workloads it is typical that some work has not been accounted for, and thus the eventual work total will exceed the initial estimate.
 - all team members are contributing toward the work item
   - does not hold if the team's velocity is shared among multiple ongoing epics
