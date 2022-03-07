@@ -1,4 +1,4 @@
-import { std, mean, sqrt, number } from "mathjs";
+import { std, mean, sqrt, number, floor } from "mathjs";
 import { argv } from "process";
 import gaussian from "gaussian";
 import { binarySearch } from "./binarySearch";
@@ -24,7 +24,7 @@ const value = binarySearch(
 );
 console.log(averageReport(data));
 console.log(
-  `There is a ${confidence * 100}% chance that we can complete ${value.toFixed(
-    0
+  `There is a ${confidence * 100}% chance that we can complete ${floor(
+    value.toFixed(0)
   )} Story Points`
 );
